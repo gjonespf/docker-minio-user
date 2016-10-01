@@ -11,7 +11,8 @@ RUN  chmod +x /entrypoint.sh
 ENV     MINIO_USER=www-data
 ENV     MINIO_GROUP=www-data
 ENV     MINIO_UID=33
-ENV     MINIO_GID=33
+#This should probably default from UID...
+#ENV     MINIO_GID=33
 ENV     MINIO_HOMEDIR=/export
 
 VOLUME      ["/export"]

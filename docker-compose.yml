@@ -9,6 +9,14 @@ services:
       image: gavinjonespf/docker-minio-user:latest
       ports:
          - "9000" 
-      command: server /export/
+      #command: server /export/
       volumes:
          - ./test/:/export/
+      environment:
+         - MINIO_HOMEDIR=/export/
+#         - MINIO_USER=test
+#         - MINIO_UID=1001
+         - MINIO_USER=www-data
+         - MINIO_UID=33
+         - MINIO_ACCESS_KEY=Z4AUD9RL7ISB9UZLYBH6
+         - MINIO_SECRET_KEY=tZ427TUq5DoHimNYhrQF9STTbhf3f1b1EsYU8ZMk
