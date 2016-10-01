@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+   minio-user-test:
+      restart: never
+      build:
+         context: .
+         dockerfile: Dockerfile
+      image: gavinjonespf/docker-minio-user:latest
+      ports:
+         - "9000" 
+      command: server /export/
+      volumes:
+         - ./test/:/export/
