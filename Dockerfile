@@ -16,4 +16,5 @@ ENV     MINIO_HOMEDIR=/export
 
 VOLUME      ["/export"]
 
+CMD         ["server", "/export"]
 ENTRYPOINT  ["/entrypoint.sh"]
