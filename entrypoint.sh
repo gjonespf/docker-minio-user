@@ -14,6 +14,8 @@ fi
 if [ ! "$MINIO_HOMEDIR" ]; then
    MINIO_HOMEDIR=/export
 fi
+export HOME="${MINIO_HOMEDIR}"
+mkdir -p $MINIO_HOMEDIR
 
 if [ "$uid_exists" ]; then
       echo "user exists"
@@ -21,12 +23,11 @@ if [ "$uid_exists" ]; then
 #    echo "user doesn't exist"
 # fi
 else
-      echo "user does not exist, creating"
-      addgroup -g ${MINIO_GID} ${MINIO_GROUP} \
-          && adduser -u ${MINIO_UID} -G ${MINIO_GID} -s /bin/bash ${MINIO_USER} -D -h "${MINIO_HOMEDIR}" 
+      echo "Ensuring group exists"
+      addgroup -g ${MINIO_GID} ${MINIO_GROUP} 
+      echo "User does not exist, creating"
+      adduser -u ${MINIO_UID} -G ${MINIO_GID} -s /bin/bash ${MINIO_USER} -D -h "${MINIO_HOMEDIR}" 
 fi
-export HOME="${MINIO_HOMEDIR}"
-mkdir -p $MINIO_HOMEDIR
 
 env
 
