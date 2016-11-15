@@ -6,7 +6,7 @@ services:
       build:
          context: .
          dockerfile: Dockerfile
-      image: gavinjonespf/docker-minio-user:latest
+      image: gavinjonespf/docker-minio-user:experimental
       ports:
          - "9000" 
       #command: server /export/
