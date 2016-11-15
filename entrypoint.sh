@@ -37,7 +37,7 @@ mkdir -p /etc/X11 && chown -R ${MINIO_UID} /etc/X11 && chmod -R 777 /etc/X11
 #Pre make & chown minio home dir
 mkdir -p "${MINIO_HOMEDIR}/.minio/" && chown -R ${MINIO_UID} "${MINIO_HOMEDIR}/.minio/" && chmod -R 777 "${MINIO_HOMEDIR}/.minio/"
 #Ensure home dir correctly set
-usermod -m -d ${MINIO_HOMEDIR} ${MINIO_USER}
+/usr/sbin/usermod -m -d ${MINIO_HOMEDIR} ${MINIO_USER}
 
 chown -R ${MINIO_UID}:${MINIO_GID} "${MINIO_HOMEDIR}"
 /usr/bin/gosu ${MINIO_UID} /go/bin/minio $@
