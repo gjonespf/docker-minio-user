@@ -36,6 +36,9 @@ env
 #Minio perms hack, won't work without this...
 mkdir -p /etc/X11 && chown -R ${MINIO_UID} /etc/X11 && chmod -R 777 /etc/X11
 
+#Pre make & chown minio home dir
+mkdir -p "${MINIO_HOMEDIR}/.minio/" && chown -R ${MINIO_UID} "${MINIO_HOMEDIR}/.minio/" && chmod -R 777 "${MINIO_HOMEDIR}/.minio/"
+
 chown -R ${MINIO_UID}:${MINIO_GID} "${MINIO_HOMEDIR}"
 export HOME="${MINIO_HOMEDIR}"
 /usr/bin/gosu ${MINIO_UID} /go/bin/minio $@
