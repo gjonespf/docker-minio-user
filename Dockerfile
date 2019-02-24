@@ -14,6 +14,7 @@ ENV     MINIO_UID=33
 #This should probably default from UID...
 #ENV     MINIO_GID=33
 ENV     MINIO_HOMEDIR=/export
+ENV     DOCHOWN=false
 
 VOLUME      ["/export"]
 

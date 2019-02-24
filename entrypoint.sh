@@ -40,6 +40,12 @@ mkdir -p "${MINIO_HOMEDIR}/.minio/" && chown -R ${MINIO_UID} "${MINIO_HOMEDIR}/.
 #/usr/sbin/usermod -m -d ${MINIO_HOMEDIR} ${MINIO_USER}
 #No usermod in alpine, will have to delete & recreate user if this comes up
 
-chown -R ${MINIO_UID}:${MINIO_GID} "${MINIO_HOMEDIR}"
+chown ${MINIO_UID}:${MINIO_GID} "${MINIO_HOMEDIR}"
+
+if [ "$MINIO_DOCHOWN" ]; then
+      chown -R ${MINIO_UID}:${MINIO_GID} "${MINIO_HOMEDIR}"
+fi
+
+
 /usr/bin/gosu ${MINIO_UID} /go/bin/minio $@
 
