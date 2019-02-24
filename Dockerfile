@@ -7,6 +7,8 @@ RUN chmod +x /usr/bin/gosu
 
 ADD entrypoint.sh /
 RUN  chmod +x /entrypoint.sh
+ADD healthcheck.sh /
+RUN  chmod +x /healthcheck.sh
 
 ENV     MINIO_USER=www-data
 ENV     MINIO_GROUP=www-data
@@ -20,3 +22,4 @@ VOLUME      ["/export"]
 
 CMD         ["server", "/export"]
 ENTRYPOINT  ["/entrypoint.sh"]
+HEALTHCHECK --interval=1m CMD /healthcheck.sh
