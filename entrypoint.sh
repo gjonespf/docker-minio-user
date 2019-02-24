@@ -47,5 +47,5 @@ if [ "$MINIO_DOCHOWN" ]; then
 fi
 
 
-/usr/bin/gosu ${MINIO_UID} /go/bin/minio $@
+/usr/bin/gosu ${MINIO_UID} /usr/bin/minio $@
 
